@@ -1,0 +1,73 @@
+<html>
+  <head>
+    <title>Demo for Styling</title>
+    <meta name="viewport" content="initial-scale=1.0, width=device-width"/>
+    <link href="../distribute/nouislider.min.css" rel="stylesheet">
+  </head>
+  <body>
+
+    <div class="example" id="slider-color" style="margin: 0 20px;">
+      <div id="range"></div>
+
+      <div style="text-align: center; font-size: 12px;">
+        <span id="range-value-4"></span> -
+        <span id="range-diff-3" style="color: blue"></span> -
+        <span id="range-value-3"></span> -
+        <span id="range-diff-2" style="color: blue"></span> -
+        <span id="range-value-2"></span> -
+        <span id="range-diff-1" style="color: blue"></span> -
+        <span id="range-value-1"></span>
+      </div>
+    </div>
+
+
+
+  <script src="../distribute/nouislider.min.js"></script>
+  <script>
+    var range = document.getElementById('range');
+
+    range.style.height = '400px';
+    range.style.margin = '0 auto 30px';
+
+    noUiSlider.create(range, {
+      start: [ 1450, 2050, 2350, 3000 ], // 4 handles, starting at...
+      margin: 300, // Handles must be at least 300 apart
+      limit: 600, // ... but no more than 600
+      connect: true, // Display a colored bar between the handles
+      direction: 'rtl', // Put '0' at the bottom of the slider
+      orientation: 'vertical', // Orient the slider vertically
+      behaviour: 'tap-drag', // Move handle on tap, bar is draggable
+      step: 150,
+      tooltips: true,
+      range: {
+        'min': 1300,
+        'max': 3250
+      },
+      pips: { // Show a scale with the slider
+        mode: 'steps',
+        stepped: true,
+        density: 4
+      }
+    });
+  </script>
+  <!-- <script>
+    var slider = document.getElementById('slider-color');
+
+    noUiSlider.create(slider, {
+      start: [ 4000, 8000, 12000, 16000 ],
+      connect: [false, true, true, true, true],
+      range: {
+        'min': [  2000 ],
+        'max': [ 20000 ]
+      }
+    });
+
+    var connect = slider.querySelectorAll('.noUi-connect');
+    var classes = ['c-1-color', 'c-2-color', 'c-3-color', 'c-4-color', 'c-5-color'];
+
+    for ( var i = 0; i < connect.length; i++ ) {
+        connect[i].classList.add(classes[i]);
+    }
+  </script> -->
+  </body>
+</html>
