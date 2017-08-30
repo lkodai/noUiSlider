@@ -3,71 +3,112 @@
     <title>Demo for Styling</title>
     <meta name="viewport" content="initial-scale=1.0, width=device-width"/>
     <link href="../distribute/nouislider.min.css" rel="stylesheet">
+
+    <style type="text/css">
+    iris-multi-range-input {
+      margin-top: 50px;
+      display: block;
+    }
+    iris-multi-range-input .noUI-target {
+      border: none;
+      box-shadow: none;
+      background-image: linear-gradient(to bottom, #eee, #ccc);
+    }
+    iris-multi-range-input .noUI-horizontal {
+      height: 10px;
+    }
+    iris-multi-range-input .noUI-horizontal .noUi-handle {
+      width: 26px;
+      height: 26px;
+      border-radius: 100%;
+      top: -8px;
+      box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+    }
+    iris-multi-range-input .noUI-horizontal .noUi-handle:before,
+    iris-multi-range-input .noUI-horizontal .noUi-handle:after {
+      display: none;
+    }
+    iris-multi-range-input .noUI-horizontal .noUi-handle.selected {
+      border: 2px solid #0095CB;
+    }
+    iris-multi-range-input .noUi-connect {
+      background-color: #999;
+    }
+    .warm-gradient {
+      background-image: linear-gradient(to right, #F58D3D, #EE5738);
+    }
+    .cool-gradient {
+      background-image: linear-gradient(to right, #9BD3EC, #28A7DF);
+    }
+
+  </style>
   </head>
+<!--   Less comments:
+
+  @track-height: 10px;
+  @thumb-size: 26px;
+
+  .noUI-target {
+    border: none;
+    box-shadow: none;
+    background-image: linear-gradient(to bottom, @gull, @heron);
+  }
+  .no-UI-horizontal {
+    height: @track-height;
+    .noUi-handle {
+      width: @thumb-size;
+      height: @thumb-size;
+      border-radius: 100%;
+      top: -8px;
+      box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+      &:before,
+      &:after {
+        display: none;
+      }
+      &.selected {
+        border: 2px solid @peacock;
+      }
+    }
+  }
+  .noUI-connect {
+    background-color: @grouse;
+  }
+  .warm-gradient {
+    background-image: linear-gradient(to right, #F58D3D, #EE5738);
+  }
+  .cool-gradient {
+    background-image: linear-gradient(to right, #9BD3EC, #28A7DF);
+  }
+     -->
+ 
   <body>
-
-    <div class="example" id="slider-color" style="margin: 0 20px;">
+    <iris-multi-range-input>
       <div id="range"></div>
-
-      <div style="text-align: center; font-size: 12px;">
-        <span id="range-value-4"></span> -
-        <span id="range-diff-3" style="color: blue"></span> -
-        <span id="range-value-3"></span> -
-        <span id="range-diff-2" style="color: blue"></span> -
-        <span id="range-value-2"></span> -
-        <span id="range-diff-1" style="color: blue"></span> -
-        <span id="range-value-1"></span>
-      </div>
-    </div>
-
-
+    </iris-multi-range-input>
 
   <script src="../distribute/nouislider.min.js"></script>
   <script>
     var range = document.getElementById('range');
 
-    range.style.height = '400px';
-    range.style.margin = '0 auto 30px';
-
     noUiSlider.create(range, {
-      start: [ 1450, 2050, 2350, 3000 ], // 4 handles, starting at...
-      margin: 300, // Handles must be at least 300 apart
-      limit: 600, // ... but no more than 600
+      start: [ 60, 65, 75, 80 ], // 3 handles, starting at...
+      margin: 3, // Handles must be at least 3 apart
       connect: true, // Display a colored bar between the handles
-      direction: 'rtl', // Put '0' at the bottom of the slider
-      orientation: 'vertical', // Orient the slider vertically
       behaviour: 'tap-drag', // Move handle on tap, bar is draggable
-      step: 150,
+      step: 1,
       tooltips: true,
       range: {
-        'min': 1300,
-        'max': 3250
+        'min': 55,
+        'max': 90
       },
-      pips: { // Show a scale with the slider
-        mode: 'steps',
-        stepped: true,
-        density: 4
-      }
     });
-  </script>
-  <!-- <script>
-    var slider = document.getElementById('slider-color');
-
-    noUiSlider.create(slider, {
-      start: [ 4000, 8000, 12000, 16000 ],
-      connect: [false, true, true, true, true],
-      range: {
-        'min': [  2000 ],
-        'max': [ 20000 ]
-      }
-    });
-
-    var connect = slider.querySelectorAll('.noUi-connect');
-    var classes = ['c-1-color', 'c-2-color', 'c-3-color', 'c-4-color', 'c-5-color'];
+    var connect = range.querySelectorAll('.noUi-connect');
+    var classes = ['warm-gradient', 'hm', 'cool-gradient', "wut"];
 
     for ( var i = 0; i < connect.length; i++ ) {
         connect[i].classList.add(classes[i]);
     }
-  </script> -->
+
+  </script>
   </body>
 </html>
